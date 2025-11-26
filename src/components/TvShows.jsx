@@ -39,7 +39,7 @@ const TvShows = () => {
           <Col className="d-flex justify-content-center align-items-center">
             <div className="col-auto text-center px-1">
               <div className="fs-1 text-wrap">
-                Ratio: {singleMovie.Ratings?.[0]?.Value}
+                Ratio: {singleMovie.Ratings?.[0]?.Value ?? "N/A"}
               </div>
               <div className="fs-1 text-wra">Genre: {singleMovie.Genre}</div>
               <div className="fs-1 text-wrap">Year: {singleMovie.Year}</div>
