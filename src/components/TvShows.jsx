@@ -19,37 +19,36 @@ const TvShows = () => {
       .catch((e) => e);
   }, [id]);
 
-  if (!singleMovie) return <Loader></Loader>;
-
-  return (
-    <Container>
-      <Row>
-        <Col md={6} className="justify-content-center align-items-center gap-5">
-          <h1>{singleMovie ? singleMovie.Title : <Loader></Loader>}</h1>
-          <img
-            className="netflix-card"
-            src={singleMovie && singleMovie.Poster}
-            alt={singleMovie && singleMovie.Title}
-            style={{ width: "100%" }}
-          />
-        </Col>
-        <Col className="d-flex justify-content-center align-items-center">
-          <div className="col-auto text-center px-1">
-            <div className="fs-1 text-wrap">
-              Ratio:{" "}
-              {singleMovie ? singleMovie.Ratings[0].Value : <Loader></Loader>}
+  if (!singleMovie) {
+    return <Loader></Loader>;
+  } else {
+    return (
+      <Container>
+        <Row>
+          <Col
+            md={6}
+            className="justify-content-center align-items-center gap-5">
+            <h1>{singleMovie.Title}</h1>
+            <img
+              className="netflix-card"
+              src={singleMovie.Poster}
+              alt={singleMovie.Title}
+              style={{ width: "100%" }}
+            />
+          </Col>
+          <Col className="d-flex justify-content-center align-items-center">
+            <div className="col-auto text-center px-1">
+              <div className="fs-1 text-wrap">
+                Ratio: {singleMovie.Ratings?.[0]?.Value}
+              </div>
+              <div className="fs-1 text-wra">Genre: {singleMovie.Genre}</div>
+              <div className="fs-1 text-wrap">Year: {singleMovie.Year}</div>
             </div>
-            <div className="fs-1 text-wra">
-              Genre: {singleMovie ? singleMovie.Genre : <Loader></Loader>}
-            </div>
-            <div className="fs-1 text-wrap">
-              Year: {singleMovie ? singleMovie.Year : <Loader></Loader>}
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  );
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 };
 
 export default TvShows;
