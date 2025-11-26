@@ -19,9 +19,7 @@ const TvShows = () => {
       .catch((e) => e);
   }, [id]);
 
-  const allMovies = () => {
-    if (!singleMovie) return <Loader></Loader>;
-  };
+  if (!singleMovie) return <Loader></Loader>;
 
   return (
     <Container>
