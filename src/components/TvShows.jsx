@@ -19,6 +19,10 @@ const TvShows = () => {
       .catch((e) => e);
   }, [id]);
 
+  const allMovies = () => {
+    if (!singleMovie) return <Loader></Loader>;
+  };
+
   return (
     <Container>
       <Row>
@@ -26,23 +30,23 @@ const TvShows = () => {
           <h1>{singleMovie ? singleMovie.Title : <Loader></Loader>}</h1>
           <img
             className="netflix-card"
-            src={singleMovie ? singleMovie.Poster : <Loader></Loader>}
-            alt={singleMovie ? singleMovie.Title : <Loader></Loader>}
+            src={singleMovie && singleMovie.Poster}
+            alt={singleMovie && singleMovie.Title}
             style={{ width: "100%" }}
           />
         </Col>
         <Col className="d-flex justify-content-center align-items-center">
           <div className="col-auto text-center px-1">
-            <p className="fs-1 text-wrap">
+            <div className="fs-1 text-wrap">
               Ratio:{" "}
               {singleMovie ? singleMovie.Ratings[0].Value : <Loader></Loader>}
-            </p>
-            <p className="fs-1 text-wrap">
+            </div>
+            <div className="fs-1 text-wra">
               Genre: {singleMovie ? singleMovie.Genre : <Loader></Loader>}
-            </p>
-            <p className="fs-1 text-wrap">
+            </div>
+            <div className="fs-1 text-wrap">
               Year: {singleMovie ? singleMovie.Year : <Loader></Loader>}
-            </p>
+            </div>
           </div>
         </Col>
       </Row>
